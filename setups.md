@@ -26,4 +26,7 @@ https://github.com/prometheus-operator/kube-prometheus/issues/555#issuecomment-6
       1. kubectl port-forward service/prometheus-kube-prometheus-prometheus -n monitoring 9090:9090
       2. kubectl port-forward service/prometheus-grafana -n monitoring 3000:80
          1. default login: admin & prom-operator
-4. 
+
+
+# Migrating Kube-Prometheus Helm to Grafana Cloud
+https://grafana.com/docs/grafana-cloud/kubernetes-monitoring/prometheus/helm-operator-migration/
