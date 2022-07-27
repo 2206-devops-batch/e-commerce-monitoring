@@ -26,7 +26,29 @@ https://github.com/prometheus-operator/kube-prometheus/issues/555#issuecomment-6
    4. access ui
       1. kubectl port-forward service/prometheus-kube-prometheus-prometheus -n monitoring 9090:9090
       2. kubectl port-forward service/prometheus-grafana -n monitoring 3000:80
-         1. default login: admin & prom-operator 
+         1. default login: admin & prom-operator
+
+## Method 3
+**Loki & Promtails Configuration Error**
+https://anaisurl.com/full-tutorial-monitoring/
+https://grafana.com/blog/2020/07/21/loki-tutorial-how-to-send-logs-from-eks-with-promtail-to-get-full-visibility-in-grafana/
+
+1. Prerequisites:
+   1. kubectl create ns monitoring
+   2. helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   3. helm repo add loki https://grafana.github.io/loki/charts
+2. helm install prom prometheus-community/kube-prometheus-stack -n monitoring --values values.yaml
+   1. kubectl port-forward service/prom-kube-prometheus-stack-prometheus -n monitoring 9090:9090
+   2. kubectl port-forward service/prom-grafana -n monitoring 3000:80
+      1. kubectl get secret/prom-grafana -n monitoring -o json
+      2. default login: admin & prom-operator
+      3. data sources:
+         1. Prometheus test == green
+         2. Loki test == red
+3. helm upgrade --install promtail grafana/promtail -f promtail-values -n monitoring
+   1. helm upgrade --install promtail grafana/promtail -f prom-values -n monitoring
+4. helm upgrade --install loki grafana/loki-distributed -n monitoring
+
 
 # Migrating Kube-Prometheus Helm to Grafana Cloud
 https://grafana.com/docs/grafana-cloud/kubernetes-monitoring/prometheus/helm-operator-migration/
