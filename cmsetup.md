@@ -1,3 +1,15 @@
+# Monitoring
+## Method 1 Loki-Stack
+**Missing Prometheus Operator**
+
+1. kubectl create namespace monitoring
+2. helm upgrade --install -n monitoring loki grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,promtail.enabled=true
+3. kubectl get secret -n monitoring loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+4. kubectl port-forward -n monitoring service/loki-grafana 3000:80
+   1. #kubectl -n monitoring port-forward svc/prometheus-operated 9090
+
+## Method 2
+
 https://github.com/grafana/helm-charts/issues/939#issuecomment-1011389950 <br>
 https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack <br>
 https://github.com/prometheus-operator/kube-prometheus/issues/555#issuecomment-635938188 <br>
