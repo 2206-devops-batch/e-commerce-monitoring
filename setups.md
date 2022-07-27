@@ -10,6 +10,7 @@
    1. #kubectl -n monitoring port-forward svc/prometheus-operated 9090
 
 ## Method 2
+**Missing Prometheus as Grafana Data Source**
 
 https://github.com/grafana/helm-charts/issues/939#issuecomment-1011389950 <br>
 https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack <br>
@@ -25,8 +26,7 @@ https://github.com/prometheus-operator/kube-prometheus/issues/555#issuecomment-6
    4. access ui
       1. kubectl port-forward service/prometheus-kube-prometheus-prometheus -n monitoring 9090:9090
       2. kubectl port-forward service/prometheus-grafana -n monitoring 3000:80
-         1. default login: admin & prom-operator
-
+         1. default login: admin & prom-operator 
 
 # Migrating Kube-Prometheus Helm to Grafana Cloud
 https://grafana.com/docs/grafana-cloud/kubernetes-monitoring/prometheus/helm-operator-migration/
