@@ -17,8 +17,8 @@ data:
         remote_write:
         - url: https://prometheus-prod-10-prod-us-central-0.grafana.net/api/prom/push
           basic_auth:
-            username: 515872
-            password: eyJrIjoiZjI3MmIxNzUxZjY0Y2QyNDBhMDNjM2JiOWNkOWUxYzI3OGE5ZjUwZCIsIm4iOiJzdGFjay00MDc1NjgtZWFzeXN0YXJ0LXByb20tcHVibGlzaGVyIiwiaWQiOjY4NTI4NX0=
+            username: *****
+            password: *****
         scrape_configs:
         - bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
           job_name: integrations/kubernetes/cadvisor
@@ -89,8 +89,8 @@ data:
         clients:
         - url: https://logs-prod3.grafana.net/loki/api/v1/push
           basic_auth:
-            username: 256906
-            password: eyJrIjoiZjI3MmIxNzUxZjY0Y2QyNDBhMDNjM2JiOWNkOWUxYzI3OGE5ZjUwZCIsIm4iOiJzdGFjay00MDc1NjgtZWFzeXN0YXJ0LXByb20tcHVibGlzaGVyIiwiaWQiOjY4NTI4NX0=
+            username: *****
+            password: *****
           external_labels:
             cluster: cloud
             job: integrations/kubernetes/eventhandler
